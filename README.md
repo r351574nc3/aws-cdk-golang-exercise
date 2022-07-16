@@ -13,3 +13,12 @@ bazelisk build //:app
 ```shell
 bazelisk run //:gazelle -- update-repos -from_file=go.mod -to_macro=deps.bzl%go_dependencies
 ```
+
+## CDK Operations
+
+### Deployment
+
+```shell
+cdk synth
+cdk deploy --all
+```
