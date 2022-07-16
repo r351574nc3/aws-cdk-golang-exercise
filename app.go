@@ -9,10 +9,6 @@ import (
 	"github.com/r351574nc3/aws-cdk-golang-excercise/stacks"
 )
 
-type AppStackProps struct {
-	awscdk.StackProps
-}
-
 func main() {
 	var props *stacks.KewlEc2StackProps
 	var stack *stacks.KewlEc2Stack

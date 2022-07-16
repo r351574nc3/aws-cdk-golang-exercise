@@ -20,5 +20,9 @@ bazelisk run //:gazelle -- update-repos -from_file=go.mod -to_macro=deps.bzl%go_
 
 ```shell
 cdk synth
-cdk deploy --all
+cdk deploy --profile brave-lp --capabilities CAPABILITY_NAMED_IAM  KewlEc2Stack 
 ```
+
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_DEFAULT_REGION

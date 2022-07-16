@@ -37,8 +37,5 @@ dev:
       - /go/pkg/
     resources:
       requests:
-        cpu: 2
-        memory: 2048Mi
-      limits:
-        cpu: 3
-        memory: 3072Mi
+        cpu: 4
+        memory: 4096Mi

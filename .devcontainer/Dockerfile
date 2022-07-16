@@ -11,7 +11,7 @@ ARG USER_GID=$USER_UID
 COPY library-scripts/*.sh /tmp/library-scripts/
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && /bin/bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
-    && apt-get install -y pkg-config zip g++ zlib1g-dev unzip python3 awscli fish emacs-nox \
+    && apt-get install -y pkg-config zip g++ zlib1g-dev unzip python3 awscli fish emacs-nox python3-pip \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
 # Install Bazel
@@ -21,9 +21,15 @@ RUN curl -fSsL -o /usr/local/bin/bazelisk https://github.com/bazelbuild/bazelisk
     && ([ "${BAZELISK_DOWNLOAD_SHA}" = "dev-mode" ] || echo "${BAZELISK_DOWNLOAD_SHA} */usr/local/bin/bazelisk" | sha256sum --check - ) \
     && chmod 0755 /usr/local/bin/bazelisk
 
-#RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
-#    && nvm install 18 \
-#    && npm install -g aws-cdk
+USER vscode 
+
+ENV NVM_DIR=/home/vscode/.nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
+    && . ${NVM_DIR}/nvm.sh \
+    && nvm install 18 \
+    && nvm use 18 \
+    && npm install -g aws-cdk \
+    && sudo pip3 install awscli
 
 # [Optional] Uncomment this section to install additional OS packages.
 #RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

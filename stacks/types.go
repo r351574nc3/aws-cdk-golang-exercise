@@ -13,4 +13,6 @@ type KewlEc2Stack struct {
 	sprops awscdk.StackProps
 	scope constructs.Construct
 	stack awscdk.Stack
+	
+	resources []any
 }

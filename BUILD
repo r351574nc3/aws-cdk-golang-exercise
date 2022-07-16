@@ -37,7 +37,6 @@ go_library(
     deps = [
         "//stacks:go_default_library",
         "@com_github_aws_aws_cdk_go_awscdk_v2//:go_default_library",
-        "@com_github_aws_constructs_go_constructs_v10//:go_default_library",
         "@com_github_aws_jsii_runtime_go//:go_default_library",
     ],
 )
