@@ -1,5 +1,4 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
-load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 
 gazelle(
     name = "gazelle",
@@ -28,4 +27,3 @@ genrule(
     executable = 1,
     local = 1,
 )
-
