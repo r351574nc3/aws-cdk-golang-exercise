@@ -14,7 +14,16 @@ func main() {
 	var stack *stacks.KewlEc2Stack
 	app := awscdk.NewApp(nil)
 
-	props = props.New(env())
+	props = &stacks.KewlEc2StackProps{
+		StackProps: awscdk.StackProps{
+			Env: env(),
+		},
+		VpcName: jsii.String("hackday-sandbox-vpc"),
+		KeyName: jsii.String("hackday-sandbox-keypair"),
+		InstanceName: jsii.String("hackday-sandbox-ec2instance"),
+		SecurityGroupName: jsii.String("hackday-sandbox-sg"),
+		VolumeName: jsii.String("hackday-sandbox-vol"),
+	}
 	stack = stack.New(app, "KewlEc2Stack", props)
 
 	app.Synth(nil)

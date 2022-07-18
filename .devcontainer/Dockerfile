@@ -31,6 +31,14 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
     && npm install -g aws-cdk \
     && sudo pip3 install awscli
 
+RUN cd ${HOME} \
+    && mkdir -p setup
+
+COPY BUILD setup/
+COPY WORKSPACE setup/
+
+RUN cd setup && bazelisk run //:gazelle && cd - && rm -rf /home/vscode/setup
+
 # [Optional] Uncomment this section to install additional OS packages.
 #RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #    && apt-get -y install --no-install-recommends nodejs npm \

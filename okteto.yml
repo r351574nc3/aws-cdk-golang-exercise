@@ -35,7 +35,11 @@ dev:
     autocreate: true
     volumes:
       - /go/pkg/
+      - /home/vscode/.cache
     resources:
       requests:
-        cpu: 4
+        cpu: 2
         memory: 4096Mi
+      limits:
+        cpu: 3
+        memory: 5120Mi

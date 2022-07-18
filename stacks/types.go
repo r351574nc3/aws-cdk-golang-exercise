@@ -7,6 +7,11 @@ import (
 
 type KewlEc2StackProps struct {
 	awscdk.StackProps
+	SecurityGroupName *string
+	InstanceName *string
+	VpcName *string
+	KeyName *string
+	VolumeName *string
 }
 
 type KewlEc2Stack struct {
