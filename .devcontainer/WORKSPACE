@@ -27,16 +27,29 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 # The first declaration of an external repository "wins".
 ############################################################
 
-load("//:deps.bzl", "go_dependencies")
-
-# gazelle:repository_macro deps.bzl%go_dependencies
-go_dependencies()
-
 go_rules_dependencies()
 
 go_register_toolchains(version = "1.18.3")
 
-# go_register_toolchains(version = "1.16.15")
 
 gazelle_dependencies()
 
+go_repository(
+    name = "in_gopkg_check_v1",
+    importpath = "gopkg.in/check.v1",
+    sum = "h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=",
+    version = "v0.0.0-20161208181325-20d25e280405",
+)
+go_repository(
+    name = "in_gopkg_yaml_v3",
+    importpath = "gopkg.in/yaml.v3",
+    sum = "h1:h8qDotaEPuJATrMmW04NCwg7v22aHH28wwpauUhK9Oo=",
+    version = "v3.0.0-20210107192922-496545a6307b",
+)
+
+go_repository(
+    name = "org_golang_x_xerrors",
+    importpath = "golang.org/x/xerrors",
+    sum = "h1:uF6paiQQebLeSXkrTqHqz0MXhXXS1KgF41eUdBNvxK0=",
+    version = "v0.0.0-20220609144429-65e65417b02f",
+)
